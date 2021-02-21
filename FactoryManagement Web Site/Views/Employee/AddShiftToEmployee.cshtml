@@ -1,0 +1,33 @@
+﻿@model FactoryManagement_Web_Site.Models.EmployeeShift 
+@{
+    ViewBag.Title = "AddShiftToEmployee";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    <link rel="stylesheet" href="~/bootstrap.css">
+</head>
+<body>
+    <div>
+        <br />
+        <h4><strong>Add Shift To Employee</strong></h4>
+        <form action="/Employee/GetNewEmployeeShift" method="post">
+            Employee: <strong>@ViewBag.name</strong>
+            <br />
+            Shift: <select name="shiftID">
+                @foreach (var item in ViewBag.shifts)
+                {
+                    <option value=@item.ID>@item.Date @item.StartTime @item.EndTime</option>
+                }
+            </select>
+
+            @Html.HiddenFor(x => x.EmployeeID)<br />
+            <input type="submit" value="Add" />
+        </form>
+    </div>
+</body>
+</html>

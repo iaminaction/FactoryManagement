@@ -1,0 +1,33 @@
+﻿@model FactoryManagement_Web_Site.Models.Employee
+@{
+    ViewBag.Title = "EditEmployee";
+}
+
+<h2>EditEmployee</h2>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    <link rel="stylesheet" href="~/bootstrap.css">
+</head>
+<body>
+    <div>
+        <form action="/Employee/GetUpdatedEmployee" method="post">
+            @Html.HiddenFor(x => x.ID)
+            FirstName:  @Html.EditorFor(x => x.FirstName)<br />
+            LastName:   @Html.EditorFor(x => x.LastName)<br />
+            StartWorkYear:  @Html.EditorFor(x => x.StartWorkYear)<br />
+            Department:  <select name="dep">
+                <option value=""></option>
+
+                @foreach (var item in ViewBag.departments)
+                {
+                    <option selected value=@item.ID>@item.Name</option>
+                }
+            </select><br />
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+</body>
+</html>

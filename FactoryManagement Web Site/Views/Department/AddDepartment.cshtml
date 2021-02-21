@@ -1,0 +1,32 @@
+﻿@model FactoryManagement_Web_Site.Models.Department
+@{
+    ViewBag.Title = "AddDepartment";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+        <br />
+        <h4><strong>Add Department</strong></h4>
+        <form action="/Department/GetNewDepartment" method="post">
+            Name: @Html.TextBoxFor(x => x.Name)<br />
+            Manager:  <select name="mng">
+                <option value=""></option>
+                         @foreach (var item in ViewBag.employees)
+                         {
+                             <option value=@item.EmployeeID>@item.FirstName @item.LastName</option>
+                         }
+                       </select>
+
+            <br />
+            <input type="submit" value="Add" />
+        </form>
+    </div>
+</body>
+</html>

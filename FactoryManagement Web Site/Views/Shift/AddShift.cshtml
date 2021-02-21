@@ -1,0 +1,30 @@
+﻿@model FactoryManagement_Web_Site.Models.Shift
+@{
+    ViewBag.Title = "AddShift";
+}
+
+<h2>AddShift</h2>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    <link rel="stylesheet" href="~/bootstrap.css">
+</head>
+<body>
+    <div>
+        <form action="/Shift/GetNewShiftData" method="post">
+            Date: @Html.TextBoxFor(x => x.Date)<br />
+            StartTime: @Html.TextBoxFor(x => x.StartTime)<br />
+            EndTime: @Html.TextBoxFor(x => x.EndTime)<br />
+            <input type="submit" value="Add" />
+        </form>
+    </div>
+</body>
+</html>
+
+
+

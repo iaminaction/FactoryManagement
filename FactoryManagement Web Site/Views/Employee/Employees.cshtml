@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Employees";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+        <br />
+        <form action="Employee/SearchResults" method="post">
+            FirstName: <input type="text" name="fname" /><br />
+            LastName: <input type="text" name="lname" /><br />
+            Department:  <select name="dep">
+                    <option value=""></option>
+
+                    @foreach (var item in ViewBag.departments)
+                    {
+                         <option value=@item.ID> @item.ID - @item.Name</option>
+                    }
+                         </select>
+            
+            <br />
+            <input type="submit" value="Search" />
+        </form>
+        <br />
+        <h4><strong>Employees and Shifts</strong></h4>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Start Work Year</th>
+                <th>DepartmentID</th>
+                <th>Shifts</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in ViewBag.employees)
+            {
+                <tr>
+                    <td>@item.EmployeeID</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.StartWorkYear</td>
+                    <td>@item.DepartmentID</td>
+                    <td>
+                        <ul>
+
+                            @foreach (var x in item.list)
+                            {
+                                <li>
+                                    @x.Date
+                                    @x.StartTime
+                                    @x.EndTime
+                                </li>
+                            }
+                        </ul>
+
+                    </td>
+                    <td>@Html.ActionLink("Edit", "EditEmployee", new { ID = @item.EmployeeID })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteEmployee", new { ID = @item.EmployeeID })</td>
+                    <td>@Html.ActionLink("Add Shift", "AddShiftToEmployee", new { ID = @item.EmployeeID })</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

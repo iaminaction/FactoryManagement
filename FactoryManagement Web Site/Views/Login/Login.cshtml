@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+</head>
+<body>
+
+    <div class="wrapper">
+        <form action="/Login/CheckLogin" method="post" class="form-signin">
+            <h2 class="form-signin-heading">Please login</h2>
+            <input type="text" class="form-control" name="usrname" placeholder="User Name" required="" autofocus="" /><br />
+            <input type="password" class="form-control" name="pswrd" placeholder="Password" required="" /><br />
+            <br />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        </form>
+
+        <h4>@ViewBag.message</h4>
+    </div>
+
+</body>
+</html>

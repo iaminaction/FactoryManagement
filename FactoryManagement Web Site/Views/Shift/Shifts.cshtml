@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Shifts";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    <link rel="stylesheet" href="~/bootstrap.css">
+</head>
+<body>
+    <div>
+        <br />
+        <input type="button" onclick="window.location.href='Shift/AddShift'" value="Add Shift" />
+        <h4><strong>Shifts</strong></h4>
+        <table border="1" align="left">
+            <tr><th>Date</th><th>StartTime</th><th>EndTime</th><th>Employees</th></tr>
+            @foreach (var item in ViewBag.shifts)
+            {
+                <tr>
+                    <td>@item.Date</td>
+                    <td>@item.StartTime</td>
+                    <td>@item.EndTime</td>
+                    <td>
+                        <ul>
+                            @foreach (var x in item.list)
+                            {
+                            <li>
+                                @Html.ActionLink((string)x.FullName, "EditEmp", new { id = x.ID })
+                            </li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Departments";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+        <br />
+        <input type="button" onclick="window.location.href='Department/AddDepartment'" value="Add Department" />
+        <h4><strong>Departments</strong></h4>
+        <table border="1">
+            <tr>
+            <th>Name</th>
+            <th>Manager Id</th>
+            <th>Manager Name</th>
+            <th></th>
+            <th></th>
+            </tr>
+            @foreach(var item in ViewBag.departments)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Manager</td>
+                    <td>@item.ManagerName</td>
+                    <td>@Html.ActionLink("Edit","EditDepartment", new { depID = @item.ID })</td>
+                    <td>
+                        @if (item.del == true)
+                            {@Html.ActionLink("Delete", "Delete", "Department", new { depID = @item.ID })}
+                        else { }
+
+                        </td>
+                        
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
+

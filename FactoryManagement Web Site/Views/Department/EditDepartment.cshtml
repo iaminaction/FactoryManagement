@@ -1,0 +1,31 @@
+﻿@model FactoryManagement_Web_Site.Models.Department
+@{
+    ViewBag.Title = "EditDepartment";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+        <h4><strong>Edit Department</strong></h4>
+        <form action="/Department/GetUpdatedDepartment" method="post">
+            @Html.HiddenFor(x => x.ID)
+            @Html.EditorFor(x => x.Name)<br />
+
+            <select name="mng">
+                <option value=""></option>
+                @foreach (var item in ViewBag.employees)
+                {
+                    <option value=@item.EmployeeID>@item.FirstName @item.LastName</option>
+                }
+            </select>
+            <br />
+            <br />
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+</body>
+</html>
